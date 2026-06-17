@@ -16,6 +16,10 @@ generator_outputs/
 *.log
 .ipynb_checkpoints/
 
+# ── Markdown docs (excluded from tracking / pushes) — except README ──
+*.md
+!README.md
+
 # ── Python ──
 __pycache__/
 *.py[cod]
