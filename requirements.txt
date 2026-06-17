@@ -1,0 +1,19 @@
+# Core retrieval (Phase 0)
+pandas>=2.0
+scikit-learn>=1.3
+numpy<2
+rouge-score>=0.1.2
+pyyaml>=6
+tqdm>=4.66
+matplotlib>=3.7
+
+# Neural rerank (Phase 2)
+torch>=2.2
+sentence-transformers>=2.7
+
+# Fine-tuning / generation — used by the fine-tuning section of notebooks/HASH_HealthQA.ipynb
+transformers>=4.41,<5
+datasets>=2.19
+accelerate>=0.30
+peft>=0.11
+sentencepiece>=0.2

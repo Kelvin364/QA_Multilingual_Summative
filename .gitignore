@@ -1,0 +1,32 @@
+# ── Data, reports, submissions (excluded from tracking / pushes) ──
+Data/
+reports/
+submissions/
+
+# Other generated artifacts (large model / pipeline outputs)
+outputs/
+generator_outputs/
+
+# ── AI tooling traces / assistant artifacts ──
+.claude/
+.cursor/
+.aider*
+.continue/
+.github/copilot*
+*.log
+.ipynb_checkpoints/
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# ── OS / editor ──
+.DS_Store
+.idea/
+.vscode/
+*.swp
