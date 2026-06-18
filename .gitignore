@@ -7,14 +7,6 @@ submissions/
 outputs/
 generator_outputs/
 
-# ── AI tooling traces / assistant artifacts ──
-.claude/
-.cursor/
-.aider*
-.continue/
-.github/copilot*
-*.log
-.ipynb_checkpoints/
 
 # ── Markdown docs (excluded from tracking / pushes) — except README ──
 *.md
