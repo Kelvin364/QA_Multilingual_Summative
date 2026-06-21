@@ -1,0 +1,9 @@
+$ python src/exp_a_routing.py
+
+baseline reference: portion=0.3150  Aka=0.2237 EngGha=0.1864
+
+ctrl  default-cfg  per_subset  no-strip              portion=0.3150 (BEATS 0.315)  mean=0.4257  Aka=0.2258 EngGha=0.1888  [20s]
+A1    routing       per_subset  no-strip             portion=0.3202 (BEATS 0.315)  mean=0.4327  Aka=0.2264 EngGha=0.1920  [21s]
+A2    routing       GLOBAL      no-strip             portion=0.3292 (BEATS 0.315)  mean=0.4449  Aka=0.2291 EngGha=0.1937  [43s]
+A3    routing       GLOBAL      strip-unicode        portion=0.3292 (BEATS 0.315)  mean=0.4449  Aka=0.2291 EngGha=0.1937  [42s]
+A4    routing       per_subset  strip-unicode        portion=0.3202 (BEATS 0.315)  mean=0.4327  Aka=0.2264 EngGha=0.1920  [20s]

@@ -1,0 +1,23 @@
+$ python src/exp_d_hybrid.py
+
+[cache] loaded base rerank preds: outputs/rerank_val_preds.csv
+
+=== Aka_Gha  base=0.2299 ===
+  input_pred q<=None p<=100    portion=0.2635  Δ=+0.0335 *BEST*
+  input_pred q<=80 p<=100      portion=0.2634  Δ=+0.0335
+  input_pred q<=None p<=60     portion=0.2632  Δ=+0.0333
+  input_pred q<=80 p<=60       portion=0.2632  Δ=+0.0333
+  input_pred q<=50 p<=100      portion=0.2632  Δ=+0.0333
+  input_pred q<=50 p<=60       portion=0.2628  Δ=+0.0329
+
+=== Eng_Gha  base=0.2020 ===
+  input_pred q<=None p<=60     portion=0.2459  Δ=+0.0438 *BEST*
+  input_pred q<=50 p<=60       portion=0.2459  Δ=+0.0438
+  input_pred q<=80 p<=60       portion=0.2459  Δ=+0.0438
+  input_pred q<=30 p<=60       portion=0.2452  Δ=+0.0432
+  input_pred q<=None p<=100    portion=0.2418  Δ=+0.0398
+  input_pred q<=50 p<=100      portion=0.2418  Δ=+0.0398
+
+=== D: rerank + Ghana hybrid (Train-only) ===
+OVERALL portion=0.3701  mean=0.5001  (rerank-only was 0.3572)
+best rules: {'Aka_Gha': 'input_pred q<=None p<=100', 'Eng_Gha': 'input_pred q<=None p<=60'}

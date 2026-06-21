@@ -1,16 +1,21 @@
-# ── Data, reports, submissions (excluded from tracking / pushes) ──
+# ── Data, submissions (excluded from tracking / pushes) ──
 Data/
-reports/
 submissions/
+
+# reports/: track the HTML report + experiment logs (deliverables); ignore everything else
+reports/*
+!reports/best_experiments.html
+!reports/experiment_logs/
 
 # Other generated artifacts (large model / pipeline outputs)
 outputs/
 generator_outputs/
 
 
-# ── Markdown docs (excluded from tracking / pushes) — except README ──
+# ── Markdown docs (excluded from tracking / pushes) — except README & the experiment log ──
 *.md
 !README.md
+!EXPERIMENTS.md
 
 # ── Python ──
 __pycache__/

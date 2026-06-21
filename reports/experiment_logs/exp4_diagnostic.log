@@ -1,0 +1,12 @@
+$ python src/exp_a0_diagnostic.py
+
+subset        n dup_rate top1_sim cur_mean oracle@20    gap
+Aka_Gha    1114    0.996    0.523    0.310     0.388  0.079
+Eng_Gha    1104    0.985    0.617    0.262     0.344  0.083
+Amh_Eth     462    0.996    0.475    0.030     0.070  0.040
+Lug_Uga     846    0.329    0.614    0.542     0.819  0.277
+Eng_Uga    1688    0.238    0.778    0.585     0.886  0.301
+
+Legend: gap = oracle@20 - cur_mean (recoverable by better selection alone).
+If oracle@20 for Ghana is HIGH -> rerank/selection can win (no GPU needed).
+If oracle@20 for Ghana is LOW  -> answer not retrievable -> generation needed / or infeasible.

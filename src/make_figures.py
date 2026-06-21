@@ -12,7 +12,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from qa_common import load_data, ROOT
 
-FIG = os.path.join(ROOT, "reports", "figures")
+FIG = os.path.join(ROOT, "figures")          # tracked dir; the notebook displays from here
 os.makedirs(FIG, exist_ok=True)
 tr, va, te = load_data()
 

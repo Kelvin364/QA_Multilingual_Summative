@@ -1,0 +1,13 @@
+$ python src/baseline_retrieval.py
+
+=== baseline_char_wb_2_5 : LOCAL VAL ===
+OVERALL  R1=0.4622  RL=0.3890  portion(/0.74)=0.3150  mean_rouge=0.4256
+  Aka_Gha  n= 1114  R1=0.3866  RL=0.2181  portion=0.2237
+  Amh_Eth  n=  462  R1=0.0268  RL=0.0268  portion=0.0199
+  Eng_Eth  n=  564  R1=0.5517  RL=0.5239  portion=0.3980
+  Eng_Gha  n= 1104  R1=0.3090  RL=0.1947  portion=0.1864
+  Eng_Ken  n=  390  R1=0.6309  RL=0.5857  portion=0.4501
+  Eng_Uga  n= 1688  R1=0.5692  RL=0.5171  portion=0.4019
+  Lug_Uga  n=  846  R1=0.5495  RL=0.5106  portion=0.3922
+  Swa_Ken  n=  518  R1=0.6244  RL=0.5825  portion=0.4465
+Wrote submissions/submission_baseline.csv  (2618 rows)

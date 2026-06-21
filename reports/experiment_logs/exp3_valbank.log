@@ -1,0 +1,8 @@
+$ python src/exp_b_valbank.py
+
+held-out Val_B n=3343  (bank+ adds Val_A n=3343)
+
+bank = Train only                  portion=0.3346  mean=0.4522
+bank = Train + Val_A               portion=0.3451  mean=0.4663
+
+Delta from adding Val to bank: +0.0104  (Test gain >= this)

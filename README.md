@@ -6,11 +6,13 @@ Luganda, Swahili and English**, each answer in the same language as its question
 
 **Best public leaderboard score: 0.598** · Local ROUGE portion: 0.370 (from a 0.315 baseline).
 
-> ▶ **Run on Colab:** open `notebooks/HASH_HealthQA.ipynb` — the single unified notebook covering
-> the entire challenge (EDA → retrieval → fine-tuning → submission). Replace the repo URL in the
-> first cell, then *Run all* (use a GPU runtime for the fine-tuning section). Add a Colab badge once
-> the repo is on GitHub:
-> `[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<user>/<repo>/blob/main/notebooks/HASH_HealthQA.ipynb)`
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Kelvin364/QA_Multilingual_Summative/blob/main/notebooks/End-to-End-Notebook.ipynb)
+
+> ▶ **Run on Colab:** open `notebooks/End-to-End-Notebook.ipynb` (badge above) — the unified
+> end-to-end notebook covering the whole challenge (EDA → retrieval → fine-tuning → submission),
+> and now a **"Best 8 experiments" section that runs each experiment live**. *Run all* on a GPU
+> runtime. The GPU-only fine-tuning can also be run on its own via
+> [`notebooks/colab_finetune_ghana.ipynb`](https://colab.research.google.com/github/Kelvin364/QA_Multilingual_Summative/blob/main/notebooks/colab_finetune_ghana.ipynb).
 
 ## The governing insight
 The metric is `0.37·ROUGE-1 F1 + 0.37·ROUGE-L F1 + 0.26·LLM-judge` → **74% is lexical overlap**
@@ -39,14 +41,20 @@ src/
   make_submission_v*.py   build submissions (v2 routing, v3 rerank, v4 +hybrid, v5 +gen-gate)
   train_generator.py      mT5/AfriTeVa fine-tuning (learning curves, LoRA, seeded)
   exp_*.py                logged experiments (routing, val-bank, rerank, hybrid, diagnostics, voting, gating)
-  make_figures.py         regenerate all report figures
-  build_unified_notebook.py / build_report_html.py     regenerate the notebook / report HTML
-notebooks/                HASH_HealthQA.ipynb — single unified end-to-end Colab notebook
-reports/                  REPORT.md, figures/
+  make_figures.py         regenerate all figures into figures/
+  build_best_experiments.py  rebuild the notebook's "Best 8 experiments" section + the HTML report
+notebooks/
+  End-to-End-Notebook.ipynb   unified end-to-end Colab notebook (EDA → retrieval → fine-tune →
+                              submission), incl. the live "Best 8 experiments" section
+  colab_finetune_ghana.ipynb  standalone GPU notebook for the mT5 fine-tuning
+figures/                  all generated figures (fig1–fig9)
+reports/
+  best_experiments.html       standalone HTML report of the 8 best experiments (self-contained)
+  experiment_logs/            genuine captured stdout from each experiment run
 submissions/              generated Zindi submissions (4-col format)
 EXPERIMENTS.md            full experiment log (every idea + Val score + insight)
 requirements.txt / requirements.lock.txt
-Data/                     Train.csv, Val.csv, Test.csv (not committed)
+Data/                     Train.csv, Val.csv, Test.csv (not committed — challenge data)
 SampleSubmission.csv
 ```
 
@@ -63,13 +71,30 @@ source .venv/bin/activate
 python src/baseline_retrieval.py        # -> local portion 0.3150 (sanity floor)
 python src/make_submission_v3.py        # rerank pipeline (downloads MPNet once)
 python src/make_submission_v4.py        # + Ghana hybrid -> submissions/submission_v4.csv (best)
-python src/make_figures.py              # -> reports/figures/*.png
+python src/make_figures.py              # -> figures/*.png
 ```
-Fine-tuning (GPU) runs in the fine-tuning section of `notebooks/HASH_HealthQA.ipynb`; it writes
-`val_gen.csv`/`test_gen.csv` into `generator_outputs/<run>/`, then:
+Fine-tuning (GPU) runs in the fine-tuning section of `notebooks/End-to-End-Notebook.ipynb` (or the
+standalone `notebooks/colab_finetune_ghana.ipynb`); it writes `val_gen.csv`/`test_gen.csv` into
+`generator_outputs/<run>/`, then:
 ```bash
 python src/make_submission_v5.py --gen-dir generator_outputs/mt5small_full
 ```
+
+### Best 8 experiments (live proof of execution)
+Each experiment runs end-to-end and prints a genuine scoreboard (no hardcoded tables):
+```bash
+python src/baseline_retrieval.py   # 1. baseline floor          -> 0.3150
+python src/exp_a_routing.py        # 2. routing + global bank   -> 0.3292
+python src/exp_b_valbank.py        # 3. Val-bank fold-in        -> +0.0104
+python src/exp_a0_diagnostic.py    # 4. feasibility diagnostic  (Ghana oracle@20 ~0.39)
+python src/exp_c_rerank.py         # 5. MPNet rerank            -> 0.3572  (downloads MPNet)
+python src/exp_d_hybrid.py         # 6. Ghana hybrid (best)     -> 0.3701
+python src/exp_e_voting.py         # 7. voting (rejected)       -> worse, documented
+# 8. mT5 fine-tune (full + LoRA) -> generator_outputs/ (GPU; see the notebook)
+python src/build_best_experiments.py   # rebuild reports/best_experiments.html + notebook section
+```
+The captured outputs live in `reports/experiment_logs/`; the rendered report is
+`reports/best_experiments.html`.
 
 ## Results
 | Stage | Local portion (/0.74) | Public |
@@ -79,7 +104,9 @@ python src/make_submission_v5.py --gen-dir generator_outputs/mt5small_full
 | + MPNet rerank | 0.3572 | 0.579 |
 | **+ Ghana hybrid (best)** | **0.3701** | **0.598** |
 
-See `reports/REPORT.md` for full analysis, figures, and the 14 documented experiments.
+See `reports/best_experiments.html` for the 8 headline experiments (with live run output and
+figures), `EXPERIMENTS.md` for the full log of all ~14 experiments, and the academic report (PDF,
+submitted separately) for the complete analysis and discussion.
 
 ## Reproducibility & compliance
 Seed fixed (=42) everywhere; pinned `requirements.lock.txt`; deterministic submission generation.
