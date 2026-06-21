@@ -6,9 +6,9 @@ Luganda, Swahili and English**, each answer in the same language as its question
 
 **Best public leaderboard score: 0.598** · Local ROUGE portion: 0.370 (from a 0.315 baseline).
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Kelvin364/QA_Multilingual_Summative/blob/main/notebooks/End-to-End-Notebook.ipynb)
+[![Open In Colab](https://drive.google.com/file/d/1Km8lQxZzjxUVbUl0MPqpEBXDPr1EpCdK/view?usp=sharing)
 
-> ▶ **Run on Colab:** open `notebooks/End-to-End-Notebook.ipynb` (badge above) — the unified
+>  **Run on Colab:** open `notebooks/End-to-End-Notebook.ipynb` (badge above) — the unified
 > end-to-end notebook covering the whole challenge (EDA → retrieval → fine-tuning → submission),
 > and now a **"Best 8 experiments" section that runs each experiment live**. *Run all* on a GPU
 > runtime. The GPU-only fine-tuning can also be run on its own via
@@ -104,7 +104,7 @@ The captured outputs live in `reports/experiment_logs/`; the rendered report is
 | + MPNet rerank | 0.3572 | 0.579 |
 | **+ Ghana hybrid (best)** | **0.3701** | **0.598** |
 
-See `reports/best_experiments.html` for the 8 headline experiments (with live run output and
+See `report document` for the 8 headline experiments (with live run output and
 figures), `EXPERIMENTS.md` for the full log of all ~14 experiments, and the academic report (PDF,
 submitted separately) for the complete analysis and discussion.
 
